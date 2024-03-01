@@ -1,0 +1,24 @@
+@base_url = http://localhost:3000
+@authToken ={{authenticate.response.body.access_token}}
+
+# @name create_account
+POST {{base_url}}/api/user
+Content-Type: application/json
+
+# @name authenticate
+
+{
+  "name": "Jonas Mascarenhas",
+  "email": "jonasa.mascarenhas@gmail.com",
+  "password": "Senha@123"
+}
+
+###
+
+POST {{base_url}}/sessions
+Content-Type: application/json
+
+{
+  "email": "jonas.mascarenhas@gmail.com",
+  "password": "Senha@123"
+}
