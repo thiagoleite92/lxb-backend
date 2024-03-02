@@ -3,38 +3,42 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    return queryInterface.createTable("TB_USERS", {
+    return queryInterface.createTable("TB_PRODUCTS", {
       id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
         allowNull: false,
         autoIncrement: true,
       },
-      email: {
+      name: {
         type: Sequelize.STRING,
         allowNull: false,
         unique: true,
       },
-      name: {
-        type: Sequelize.STRING,
+      price: {
+        type: Sequelize.INTEGER,
         allowNull: false,
       },
-      password: {
-        type: Sequelize.STRING,
+      colorId: {
+        type: Sequelize.INTEGER,
         allowNull: false,
+        references: {
+          model: "TB_COLORS",
+          key: "id",
+        },
       },
-      createdAt: {
-        type: Sequelize.DATE,
+      brandId: {
+        type: Sequelize.INTEGER,
         allowNull: false,
-      },
-      updatedAt: {
-        type: Sequelize.DATE,
-        allowNull: false,
+        references: {
+          model: "TB_BRANDS",
+          key: "id",
+        },
       },
     });
   },
 
   async down(queryInterface) {
-    return queryInterface.dropTable("TB_USERS");
+    return queryInterface.dropTable("TB_PRODUCTS");
   },
 };
