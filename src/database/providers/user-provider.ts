@@ -9,4 +9,8 @@ export class UserProvider implements UserRepository {
   async findByEmail(email: string) {
     return await User.findOne({ where: { email } });
   }
+
+  async findAll() {
+    return User.findAll();
+  }
 }

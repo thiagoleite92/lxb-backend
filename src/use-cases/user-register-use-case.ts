@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { UserRepository } from "../repositories/user-repository";
-import { ConflictError } from "../errors/conflict-error";
+import { ConflictError } from "../errors/ApiErrors";
 import { registerUserSchema } from "../schemas";
 import { HashGenerator } from "../cryptography/hash-generator";
 

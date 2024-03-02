@@ -9,16 +9,16 @@ Content-Type: application/json
 
 {
   "name": "Ana",
-  "email": "jonasa.mascarenhas@gmail.com",
+  "email": "jonas.mascarenhas@gmail.com",
   "password": "Senha@123"
 }
 
 ###
 
-POST {{base_url}}/sessions
+POST {{base_url}}/api/auth/session
 Content-Type: application/json
 
 {
-  "email": "jonas.mascarenhas@gmail.com",
+  "login": "jonas.mascarenhas@gmail.com",
   "password": "Senha@123"
 }

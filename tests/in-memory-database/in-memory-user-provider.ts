@@ -17,9 +17,19 @@ export class InMemoryUserProvider implements UserRepository {
 
     this.items.push(createUser);
   }
+
   async findByEmail(email: string) {
     const user = this.items.find((item) => item.email === email);
 
-    return user ? user : null;
+    if (user) {
+      return user;
+    } else {
+      return null;
+    }
+  }
+
+  async findAll() {
+    const items = this.items;
+    return items;
   }
 }

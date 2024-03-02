@@ -1,12 +1,11 @@
 import { Request, Response } from "express";
 import { registerUserSchema } from "../schemas";
-import { UserRegisterUseCase } from "../use-cases/user-register-use-case";
-import { UserProvider } from "../database/providers/user-provider";
+import { makeUserRegisterUseCase } from "../use-cases/factories/make-user-register-use-case";
 
 export const userRegisterController = async (req: Request, res: Response) => {
   const user = registerUserSchema.parse(req?.body);
 
-  const registerUserUseCase = new UserRegisterUseCase(new UserProvider());
+  const registerUserUseCase = makeUserRegisterUseCase();
 
   await registerUserUseCase.execute(user);
 

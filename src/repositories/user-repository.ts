@@ -8,4 +8,6 @@ export interface UserRepository {
   }): Promise<void>;
 
   findByEmail(email: string): Promise<User | null>;
+
+  findAll(): Promise<User[]>;
 }

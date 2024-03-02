@@ -1,6 +1,6 @@
 import { ZodError } from "zod";
-import { ConflictError } from "../errors/conflict-error";
 import { NextFunction, Request, Response } from "express";
+import CustomError from "../errors/CustomError";
 
 export default function errorMiddleware(
   err: Error,
@@ -12,8 +12,8 @@ export default function errorMiddleware(
     return res.status(400).json({ issues: err.format() });
   }
 
-  if (err instanceof ConflictError) {
-    return res.status(409).json({ message: err.message });
+  if (err instanceof CustomError) {
+    return res.status(err.statusCode).json({ message: err.message });
   }
 
   return res.status(500).json({ message: "Something went wrong" });
