@@ -1,9 +1,9 @@
 import { ZodError } from "zod";
-import { ConflictError } from "../use-cases/errors/conflict-error";
-import { ErrorRequestHandler, NextFunction, Request, Response } from "express";
+import { ConflictError } from "../errors/conflict-error";
+import { NextFunction, Request, Response } from "express";
 
 export default function errorMiddleware(
-  err: ErrorRequestHandler,
+  err: Error,
   req: Request,
   res: Response,
   next: NextFunction

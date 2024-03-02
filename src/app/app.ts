@@ -1,6 +1,6 @@
 import express from "express";
-import { userRouter } from "../routes/user-router";
 import errorMiddleware from "../middleware/error-middleware";
+import { userRouter } from "../routes";
 
 export const app = express();
 

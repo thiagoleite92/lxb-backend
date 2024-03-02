@@ -8,7 +8,7 @@ Content-Type: application/json
 # @name authenticate
 
 {
-  "name": "Jonas Mascarenhas",
+  "name": "Ana",
   "email": "jonasa.mascarenhas@gmail.com",
   "password": "Senha@123"
 }
