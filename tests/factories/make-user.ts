@@ -1,10 +1,9 @@
 import { faker } from "@faker-js/faker";
 
-import { registerUserSchema } from "../../src/schemas";
-import { z } from "zod";
+import { RegisterUserSchema } from "../../src/schemas";
 
 export function makeUser(
-  override: Partial<z.infer<typeof registerUserSchema>> = {},
+  override: Partial<RegisterUserSchema> = {},
   id?: number
 ) {
   const user = {

@@ -1,11 +1,13 @@
-import { BrandProvider } from "../../src/database/providers/brand-provider";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { BrandRepository } from "../../src/repositories/brand-repository";
+import { CreateBrandSchema } from "../../src/schemas";
 
-export class InMemoryBrandProvider implements BrandProvider {
+export class InMemoryBrandProvider implements BrandRepository {
   public items: any[] = [];
 
-  async create(name: string): Promise<void> {
+  async create(createBrand: CreateBrandSchema) {
     this.items.push({
-      brand: name,
+      brand: createBrand.brand,
       createdAt: new Date(),
       updatedAt: new Date(),
       id: Math.floor(Math.random() * 10000),
@@ -19,6 +21,16 @@ export class InMemoryBrandProvider implements BrandProvider {
       return brand;
     } else {
       return null;
+    }
+  }
+
+  async findById(id: number) {
+    const brand = this.items.find((item) => item.id === id);
+
+    if (!brand) {
+      return null;
+    } else {
+      return brand;
     }
   }
 }
