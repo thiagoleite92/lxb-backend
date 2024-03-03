@@ -15,10 +15,18 @@ module.exports = {
         allowNull: false,
         unique: true,
       },
+      createdAt: {
+        type: Sequelize.DATE,
+        allowNull: false,
+      },
+      updatedAt: {
+        type: Sequelize.DATE,
+        allowNull: false,
+      },
     });
   },
 
   async down(queryInterface) {
-    return queryInterface.dropTrable("TB_BRANDS");
+    return queryInterface.dropTable("TB_BRANDS");
   },
 };

@@ -23,10 +23,18 @@ module.exports = {
           key: "id",
         },
       },
+      createdAt: {
+        type: Sequelize.DATE,
+        allowNull: false,
+      },
+      updatedAt: {
+        type: Sequelize.DATE,
+        allowNull: false,
+      },
     });
   },
 
   async down(queryInterface) {
-    return queryInterface.dropTrable("TB_MODELS");
+    return queryInterface.dropTable("TB_MODELS");
   },
 };
