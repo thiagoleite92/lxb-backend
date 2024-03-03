@@ -1,5 +1,5 @@
 import { ColorRepository } from "../../repositories/color-repository";
-import { Color } from "../entities/color-entity";
+import { Color } from "../entities/colors-entity";
 
 export class ColorProvider implements ColorRepository {
   async create(name: string): Promise<void> {

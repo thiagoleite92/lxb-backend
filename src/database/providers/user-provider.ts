@@ -1,5 +1,5 @@
 import { UserRepository } from "../../repositories/user-repository";
-import { User } from "../entities/user-entity";
+import { User } from "../entities/users-entity";
 
 export class UserProvider implements UserRepository {
   async create(user: { name: string; password: string; email: string }) {

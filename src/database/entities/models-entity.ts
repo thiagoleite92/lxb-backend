@@ -1,5 +1,6 @@
 import { DataTypes, Model } from "sequelize";
 import sequelize from "../sequelize";
+import { Brands } from "./brands-entity";
 
 export class Models extends Model {
   public id!: number;
@@ -32,3 +33,5 @@ Models.init(
     tableName: "TB_MODELS",
   }
 );
+
+Models.belongsTo(Brands, { foreignKey: "brandId", as: "brand" });

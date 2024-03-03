@@ -16,3 +16,16 @@ export const authenticateSessionSchema = z.object({
 export type AuthenticateSessionSchema = z.infer<
   typeof authenticateSessionSchema
 >;
+
+export const createBrandSchema = z.object({
+  brand: z.string().min(3).max(50),
+});
+
+export type CreateBrandSchema = z.infer<typeof createBrandSchema>;
+
+export const createModelSchema = z.object({
+  model: z.string().min(3).max(50),
+  brandId: z.number(),
+});
+
+export type CreateModelSchema = z.infer<typeof createModelSchema>;

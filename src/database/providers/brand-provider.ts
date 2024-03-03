@@ -1,11 +1,15 @@
 import { BrandRepository } from "../../repositories/brand-repository";
-import { Brand } from "../entities/brand-entity";
+import { CreateBrandSchema } from "../../schemas";
+import { Brands } from "../entities/brands-entity";
 
 export class BrandProvider implements BrandRepository {
-  async create(name: string): Promise<void> {
-    await Brand.create({ brand: name });
+  async findById(id: number) {
+    return Brands.findByPk(id);
   }
-  findByName(name: string): Promise<Brand | null> {
-    return Brand.findOne({ where: { brand: name } });
+  async create(createBrand: CreateBrandSchema): Promise<void> {
+    await Brands.create(createBrand);
+  }
+  findByName(name: string): Promise<Brands | null> {
+    return Brands.findOne({ where: { brand: name } });
   }
 }

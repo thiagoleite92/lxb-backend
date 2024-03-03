@@ -1,6 +1,8 @@
-import { Brand } from "../database/entities/brand-entity";
+import { Brands } from "../database/entities/brands-entity";
+import { CreateBrandSchema } from "../schemas";
 
 export interface BrandRepository {
-  create(name: string): Promise<void>;
-  findByName(name: string): Promise<Brand | null>;
+  create(createBrand: CreateBrandSchema): Promise<void>;
+  findByName(name: string): Promise<Brands | null>;
+  findById(id: number): Promise<Brands | null>;
 }

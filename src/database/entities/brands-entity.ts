@@ -1,29 +1,26 @@
 import { DataTypes, Model } from "sequelize";
 import sequelize from "../sequelize";
 
-export class Color extends Model {
+export class Brands extends Model {
   public id!: number;
   public color!: string;
-
-  public readonly createdAt!: Date;
-  public readonly updatedAt!: Date;
 }
 
-Color.init(
+Brands.init(
   {
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
     },
-    color: {
+    brand: {
       type: DataTypes.STRING,
       allowNull: false,
     },
   },
   {
     sequelize,
-    modelName: "Color",
-    tableName: "TB_COLORS",
+    modelName: "Brands",
+    tableName: "TB_BRANDS",
   }
 );
