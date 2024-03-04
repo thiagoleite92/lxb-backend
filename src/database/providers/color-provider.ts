@@ -1,11 +1,11 @@
 import { ColorRepository } from "../../repositories/color-repository";
-import { Color } from "../entities/colors-entity";
+import { Colors } from "../entities/colors-entity";
 
 export class ColorProvider implements ColorRepository {
   async create(name: string): Promise<void> {
-    await Color.create({ color: name });
+    await Colors.create({ color: name });
   }
-  findByName(name: string): Promise<Color | null> {
-    return Color.findOne({ where: { color: name } });
+  async findOrCreate(color: string) {
+    return Colors.findOrCreate({ where: { color }, defaults: { color } });
   }
 }

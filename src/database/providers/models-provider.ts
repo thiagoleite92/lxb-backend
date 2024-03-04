@@ -5,4 +5,11 @@ export class ModelProvider implements ModelRepository {
   async create(dto: { model: string; brandId: number }) {
     await Models.create(dto);
   }
+
+  async findOrCreate(model: string, brandId: number) {
+    return Models.findOrCreate({
+      where: { model },
+      defaults: { model, brandId },
+    });
+  }
 }

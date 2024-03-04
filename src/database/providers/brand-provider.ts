@@ -9,7 +9,11 @@ export class BrandProvider implements BrandRepository {
   async create(createBrand: CreateBrandSchema): Promise<void> {
     await Brands.create(createBrand);
   }
-  findByName(name: string): Promise<Brands | null> {
+  async findByName(name: string): Promise<Brands | null> {
     return Brands.findOne({ where: { brand: name } });
+  }
+
+  async findOrCreate(brand: string) {
+    return Brands.findOrCreate({ where: { brand }, defaults: { brand } });
   }
 }
