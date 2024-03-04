@@ -4,14 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "tsx src;index.ts",
+    "start": "tsx src/server/server.ts",
     "start:dev": "tsx watch src/server/server.ts",
     "build": "tsup-node",
     "test": "vitest",
     "db:migrate": "npx sequelize-cli db:migrate",
     "db:migrate:rollback": "npx sequelize-cli db:migrate:undo",
     "db:migrate:rollbackall": "npx sequelize-cli db:migrate:undo:all",
-    "db:create": "npx sequelize-cli migration:create --name"
+    "db:create": "npx sequelize-cli migration:create --name",
+    "vercel-build": "npx sequelize-cli db:migrate"
   },
   "keywords": [],
   "author": "",
