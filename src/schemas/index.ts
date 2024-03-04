@@ -89,12 +89,15 @@ export const createProductSchemaV3 = z.array(
 export type CreateProductV3 = z.infer<typeof createProductSchemaV3>;
 
 export const updateProductSchema = z.object({
-  id: z.number(),
   name: z.string().min(3).max(50),
   price: z.number(),
   color: z.string().min(3).max(50),
   brand: z.string().min(3).max(50),
   model: z.string().min(3).max(50),
+});
+
+export const updateProductSchemaParams = z.object({
+  productId: z.coerce.number(),
 });
 
 export type UpdateProduct = z.infer<typeof updateProductSchema>;

@@ -13,7 +13,7 @@ export class UpdateProductUseCase {
     private readonly brandProvider: BrandProvider
   ) {}
 
-  async execute(updateProduct: UpdateProduct) {
+  async execute(updateProduct: UpdateProduct & { id: number }) {
     const product = await this.productProvider.findById(updateProduct?.id);
 
     if (!product) {

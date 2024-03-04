@@ -101,14 +101,22 @@ Content-Type: application/json
 
 # @name updateProduct
 
-PUT {{base_url}}/api/product
+PUT {{base_url}}/api/product/24
 Content-Type: application/json
 
 {
-  "id": 24,
-  "name": "Ajudadenewqaseqw",
+  "name": "De novo pra garantir",
   "price": 1000,
   "color": "cor diferente",
   "brand": "marca nova",
   "model": "modelo XPTO 14"
- }
+}
+
+###
+
+# @name deleteProduct
+
+DELETE {{base_url}}/api/product/21
+Content-Type: application/json
+
+

@@ -7,6 +7,7 @@ import { makeColor } from "../../tests/factories/make-color";
 import { makeBrand } from "../../tests/factories/make-brand";
 import { makeModel } from "../../tests/factories/make-model";
 import { UpdateProductUseCase } from "./update-product-use-case";
+import { ResourceNotFoundError } from "../errors/ApiErrors";
 
 let sut: UpdateProductUseCase;
 let inMemoryProductProvider: InMemoryProductProvider;
@@ -105,5 +106,38 @@ describe("Use Case -> UpdateProductUseCase", () => {
     expect(inMemoryModelProvider.items).toHaveLength(2);
     expect(inMemoryProductProvider.items).toHaveLength(1);
     expect(inMemoryProductProvider.items[0].name).toEqual("Produto atualizado");
+  });
+
+  it("should not be able to update a product that not existgs", async () => {
+    const { color } = makeColor();
+    const { brand, id: brandId } = makeBrand();
+    const model = makeModel({}, brandId);
+
+    await inMemoryColorProvider.create(color);
+    await inMemoryBrandProvider.create(brand);
+    await inMemoryModelProvider.create(model);
+
+    const product = {
+      name: "Novo Produto Teste 1",
+      price: 1000,
+      colorId: inMemoryColorProvider.items[0].id,
+      brandId: inMemoryBrandProvider.items[0].id,
+      modelId: inMemoryModelProvider.items[0].id,
+    };
+
+    await inMemoryProductProvider.create(product);
+
+    const notExistProduct = {
+      id: 123321,
+      name: "Produto atualizado",
+      price: 1000,
+      color: "cor diferente",
+      brand: "marca diferente",
+      model: "novo modelo",
+    };
+
+    expect(
+      async () => await sut.execute(notExistProduct)
+    ).rejects.toBeInstanceOf(ResourceNotFoundError);
   });
 });

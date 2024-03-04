@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { z } from "zod";
 import { UserRepository } from "../../src/repositories/user-repository";
 import { registerUserSchema } from "../../src/schemas";

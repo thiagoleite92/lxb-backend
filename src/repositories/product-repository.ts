@@ -29,4 +29,5 @@ export interface ProductRepository {
   }: CreateProductV1): Promise<Products | null>;
   findById(id: number): Promise<Products | null>;
   update(updateProduct: UpdateProduct): Promise<void>;
+  delete(id: number): Promise<void>;
 }

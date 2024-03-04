@@ -80,4 +80,8 @@ export class InMemoryProductProvider implements ProductRepository {
 
     return;
   }
+
+  async delete(id: number) {
+    this.items = this.items.filter((item) => item.id !== id);
+  }
 }
