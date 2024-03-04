@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { Brands } from "../../src/database/entities/brands-entity";
 import { BrandRepository } from "../../src/repositories/brand-repository";
-import { CreateBrandSchema } from "../../src/schemas";
 
 export class InMemoryBrandProvider implements BrandRepository {
   public items: any[] = [];
 
-  async create(createBrand: CreateBrandSchema) {
+  async create(brand: string) {
     this.items.push({
-      brand: createBrand.brand,
+      brand,
       createdAt: new Date(),
       updatedAt: new Date(),
       id: Math.floor(Math.random() * 10000),
@@ -31,6 +31,18 @@ export class InMemoryBrandProvider implements BrandRepository {
       return null;
     } else {
       return brand;
+    }
+  }
+
+  async findOrCreate(brand: string): Promise<[Brands, boolean]> {
+    const existingBrand = await this.findByName(brand);
+
+    if (existingBrand) {
+      return [existingBrand, false];
+    } else {
+      const newBrand = await this.create(brand);
+
+      return [newBrand!, true];
     }
   }
 }

@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { Models } from "../../src/database/entities/models-entity";
 import { ModelRepository } from "../../src/repositories/models-repository";
 import { CreateModelSchema } from "../../src/schemas";
 
@@ -21,6 +22,21 @@ export class InMemoryModelProvider implements ModelRepository {
       return null;
     } else {
       return existingModel;
+    }
+  }
+
+  async findOrCreate(
+    model: string,
+    brandId: number
+  ): Promise<[Models, boolean]> {
+    const existingModel = await this.findByName(model);
+
+    if (existingModel) {
+      return [existingModel, false];
+    } else {
+      const newModel = await this.create({ model, brandId });
+
+      return [newModel!, true];
     }
   }
 }

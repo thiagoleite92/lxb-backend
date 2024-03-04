@@ -11,7 +11,6 @@ export type CreateProduct = {
 
 export interface ProductRepository {
   create(createProduct: CreateProduct): Promise<void>;
-  createBulk(createProduct: CreateProduct[]): Promise<void>;
   findExistingProduct({
     name,
     brand,

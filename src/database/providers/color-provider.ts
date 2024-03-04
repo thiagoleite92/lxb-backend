@@ -5,7 +5,7 @@ export class ColorProvider implements ColorRepository {
   async create(name: string): Promise<void> {
     await Colors.create({ color: name });
   }
-  async findOrCreate(color: string) {
+  async findOrCreate(color: string): Promise<[Colors, boolean]> {
     return Colors.findOrCreate({ where: { color }, defaults: { color } });
   }
 }
