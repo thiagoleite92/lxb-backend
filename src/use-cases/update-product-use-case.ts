@@ -29,12 +29,15 @@ export class UpdateProductUseCase {
       brand?.id
     );
 
-    product.name = updateProduct?.name;
-    product.price = updateProduct?.price;
-    product.colorId = color?.id;
-    product.brandId = brand?.id;
-    product.modelId = model?.id;
+    const newProduct = {
+      name: updateProduct?.name,
+      price: updateProduct?.price,
+      colorId: color?.id,
+      brandId: brand?.id,
+      modelId: model?.id,
+      id: updateProduct?.id,
+    };
 
-    await product.save();
+    await this.productProvider.update(newProduct);
   }
 }

@@ -1,6 +1,7 @@
 import {
   CreateProduct,
   ProductRepository,
+  UpdateProduct,
 } from "../../repositories/product-repository";
 import { CreateProductV1 } from "../../schemas";
 import { Brands } from "../entities/brands-entity";
@@ -50,7 +51,15 @@ export class ProductProvider implements ProductRepository {
     });
   }
 
-  findById(id: number): Promise<Products | null> {
+  async findById(id: number): Promise<Products | null> {
     return Products.findByPk(id);
+  }
+
+  async update(updateProduct: UpdateProduct) {
+    await Products.update(
+      { ...updateProduct },
+      { where: { id: updateProduct.id } }
+    );
+    return;
   }
 }

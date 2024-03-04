@@ -3,6 +3,7 @@ import { Products } from "../../src/database/entities/products-entity";
 import {
   CreateProduct,
   ProductRepository,
+  UpdateProduct,
 } from "../../src/repositories/product-repository";
 import { CreateProductV1 } from "../../src/schemas";
 import { InMemoryBrandProvider } from "./in-memory-brand-provider";
@@ -56,5 +57,27 @@ export class InMemoryProductProvider implements ProductRepository {
     } else {
       return null;
     }
+  }
+
+  async findById(id: number) {
+    const product = this.items.find((item) => item.id === id);
+
+    if (!product) {
+      return null;
+    } else {
+      return product;
+    }
+  }
+
+  async update(updateProduct: UpdateProduct) {
+    const product = this.items.find((item) => item.id === updateProduct.id);
+
+    product.name = updateProduct?.name;
+    product.price = updateProduct?.price;
+    product.modelId = updateProduct?.modelId;
+    product.colorId = updateProduct?.colorId;
+    product.brandId = updateProduct?.brandId;
+
+    return;
   }
 }
