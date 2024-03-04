@@ -1,11 +1,9 @@
 @base_url = http://localhost:3000
-# @authToken ={{authenticate.response.body.access_token}}
+@authToken = {{authenticate.response.body.token}}
 
 # @name create_account
 POST {{base_url}}/api/user
 Content-Type: application/json
-
-# @name authenticate
 
 {
   "name": "Ana",
@@ -14,6 +12,8 @@ Content-Type: application/json
 }
 
 ###
+
+# @name authenticate
 
 POST {{base_url}}/api/auth/session
 Content-Type: application/json
@@ -28,6 +28,7 @@ Content-Type: application/json
  # @name createProductV1
 POST {{base_url}}/api/product
 Content-Type: application/json
+Authorization: Bearer {{authToken}}
 
  {
   "name": "novo produto 22",

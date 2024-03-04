@@ -1,4 +1,4 @@
-import { User } from "../database/entities/users-entity";
+import { Users } from "../database/entities/users-entity";
 
 export interface UserRepository {
   create(user: {
@@ -7,7 +7,9 @@ export interface UserRepository {
     email: string;
   }): Promise<void>;
 
-  findByEmail(email: string): Promise<User | null>;
+  findByEmail(email: string): Promise<Users | null>;
 
-  findAll(): Promise<User[]>;
+  findAll(): Promise<Users[]>;
+
+  findById(id: number): Promise<Users | null>;
 }
