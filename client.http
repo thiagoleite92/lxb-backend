@@ -120,4 +120,20 @@ Content-Type: application/json
 DELETE {{base_url}}/api/product/21
 Content-Type: application/json
 
+###
+
+# @name getProduct
+
+GET {{base_url}}/api/product/23
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+###
+
+# @name findAllProducts
+
+GET {{base_url}}/api/product/
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
 

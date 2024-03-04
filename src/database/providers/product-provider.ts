@@ -66,4 +66,8 @@ export class ProductProvider implements ProductRepository {
   async delete(id: number) {
     await Products.destroy({ where: { id } });
   }
+
+  async findAll() {
+    return Products.findAll();
+  }
 }
