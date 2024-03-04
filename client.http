@@ -96,3 +96,19 @@ Content-Type: application/json
 
 POST {{base_url}}/api/product
 Content-Type: application/json
+
+###
+
+# @name updateProduct
+
+PUT {{base_url}}/api/product
+Content-Type: application/json
+
+{
+  "id": 24,
+  "name": "novo velho produto 22",
+  "price": 1000,
+  "color": "cor diferente",
+  "brand": "marca nova",
+  "model": "modelo XPTO 14"
+ }

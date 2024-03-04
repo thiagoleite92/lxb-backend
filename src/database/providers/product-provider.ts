@@ -49,4 +49,8 @@ export class ProductProvider implements ProductRepository {
       ],
     });
   }
+
+  findById(id: number): Promise<Products | null> {
+    return Products.findByPk(id);
+  }
 }

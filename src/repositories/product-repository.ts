@@ -18,4 +18,5 @@ export interface ProductRepository {
     model,
     price,
   }: CreateProductV1): Promise<Products | null>;
+  findById(id: number): Promise<Products | null>;
 }

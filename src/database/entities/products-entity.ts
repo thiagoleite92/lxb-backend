@@ -7,10 +7,10 @@ import { Models } from "./models-entity";
 export class Products extends Model {
   public id!: number;
   public name!: string;
-  public brand!: string;
-  public model!: string;
+  public brandId!: number;
+  public modelId!: number;
   public price!: number;
-  public color!: string;
+  public colorId!: number;
 
   public readonly createdAt!: Date;
   public readonly updatedAt!: Date;
