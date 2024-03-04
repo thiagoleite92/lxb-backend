@@ -9,6 +9,11 @@ const dbPassword = env.DATABASE_PASSWORD;
 const sequelize = new Sequelize(dbName, dbUser, dbPassword, {
   dialect: "postgres",
   host: dbHost,
+  dialectOptions: {
+    ssl: {
+      require: true,
+    },
+  },
 });
 
 export default sequelize;
