@@ -1,5 +1,8 @@
 import { DataTypes, Model } from "sequelize";
 import sequelize from "../sequelize";
+import { Brands } from "./brands-entity";
+import { Colors } from "./colors-entity";
+import { Models } from "./models-entity";
 
 export class Products extends Model {
   public id!: number;
@@ -23,6 +26,7 @@ Products.init(
     name: {
       type: DataTypes.STRING,
       allowNull: false,
+      unique: false,
     },
     price: {
       type: DataTypes.INTEGER,
@@ -45,6 +49,14 @@ Products.init(
         key: "colorId",
       },
     },
+    modelId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: "TB_MODELS",
+        key: "modelId",
+      },
+    },
   },
   {
     sequelize,
@@ -52,3 +64,7 @@ Products.init(
     tableName: "TB_PRODUCTS",
   }
 );
+
+Products.belongsTo(Brands, { foreignKey: "brandId", as: "brand" });
+Products.belongsTo(Colors, { foreignKey: "colorId", as: "color" });
+Products.belongsTo(Models, { foreignKey: "modelId", as: "model" });
