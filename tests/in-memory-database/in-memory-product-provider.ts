@@ -46,7 +46,9 @@ export class InMemoryProductProvider implements ProductRepository {
       (item) =>
         item.colorId === colorId &&
         item.brandId === brandId &&
-        item.modelId === modelId
+        item.modelId === modelId &&
+        item.name === findProduct.name &&
+        item.price === findProduct.price
     );
 
     if (find) {
