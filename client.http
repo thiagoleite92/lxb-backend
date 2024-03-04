@@ -22,3 +22,77 @@ Content-Type: application/json
   "login": "jonas.mascarenhas@gmail.com",
   "password": "Senha@123"
 }
+
+###
+
+ # @name createProductV1
+POST {{base_url}}/api/product
+Content-Type: application/json
+
+ {
+  "name": "novo produto 22",
+  "price": 1000,
+  "color": "nova cor",
+  "brand": "xaiomi",
+  "model": "xaiomi 9"
+ }
+
+###
+
+ # @name createProductV2
+
+POST {{base_url}}/api/product
+Content-Type: application/json
+
+ {
+  "name": "novo produto 2",
+  "details": {
+    "brand": "motorola",
+    "model": "motorola XYZ",
+    "color": "verde"
+  },
+  "price": 2000
+ }
+
+###
+
+ # @name createProductV3
+
+POST {{base_url}}/api/product
+Content-Type: application/json
+
+[
+  {
+    "name": "novo produto 2",
+    "brand": "xaiomi",
+    "model": "xaiomi 9",
+    "data": [
+        {
+        "price":  1000,
+        "color": "nova cor"
+        },
+      {
+        "price":  10000,
+        "color": "blue"
+        }
+      ]
+  },
+  {
+    "name": "novo produto 4",
+    "brand": "iphone",
+    "model": "XPTO",
+    "data": [
+      {
+        "price": 4000,
+        "color": "preto"
+      }
+    ]
+  }
+]
+
+###
+
+# @name createProductInvalidFormat
+
+POST {{base_url}}/api/product
+Content-Type: application/json

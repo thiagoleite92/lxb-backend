@@ -29,3 +29,61 @@ export const createModelSchema = z.object({
 });
 
 export type CreateModelSchema = z.infer<typeof createModelSchema>;
+
+export const createProductSchemaV1 = z.object({
+  name: z.string().min(3).max(50),
+  price: z.number(),
+  color: z.string(),
+  brand: z.string(),
+  model: z.string(),
+});
+
+export type CreateProductV1 = z.infer<typeof createProductSchemaV1>;
+
+export const createProductSchemaV2 = z
+  .object({
+    name: z.string().min(3).max(50),
+    details: z.object({
+      brand: z.string(),
+      model: z.string(),
+      color: z.string(),
+    }),
+    price: z.number(),
+  })
+  .transform(({ name, price, details: { brand, color, model } }) => ({
+    name,
+    price,
+    color,
+    brand,
+    model,
+  }));
+
+export type CreateProductV2 = z.infer<typeof createProductSchemaV2>;
+
+export const createProductSchemaV3 = z.array(
+  z
+    .object({
+      name: z.string().min(3).max(50),
+      brand: z.string(),
+      model: z.string(),
+      data: z.array(
+        z.object({
+          price: z.number(),
+          color: z.string(),
+        })
+      ),
+    })
+    .transform((value) => {
+      const products = value?.data.map((details) => ({
+        name: value.name,
+        brand: value.brand,
+        model: value.model,
+        price: details.price,
+        color: details.color,
+      }));
+
+      return products;
+    })
+);
+
+export type CreateProductV3 = z.infer<typeof createProductSchemaV3>;
