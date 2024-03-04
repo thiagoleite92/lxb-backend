@@ -5,4 +5,5 @@ export interface BrandRepository {
   create(createBrand: CreateBrandSchema): Promise<void>;
   findByName(name: string): Promise<Brands | null>;
   findById(id: number): Promise<Brands | null>;
+  findOrCreate(model: string): Promise<[Brands, boolean]>;
 }
