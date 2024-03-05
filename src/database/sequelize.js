@@ -7,14 +7,14 @@ const dbDialect = dbConfig[env.NODE_ENV].dialect;
 const dbUser = dbConfig[env.NODE_ENV].username;
 const dbPassword = dbConfig[env.NODE_ENV].password;
 const dbHost = dbConfig[env.NODE_ENV].host;
-const dbName = dbConfig[env.NODE_ENV].database;
+const dbName = env.DATABASE_NAME;
 
 const sequelize = new Sequelize(dbName, dbUser, dbPassword, {
   dialect: dbDialect,
   host: dbHost,
   dialectOptions: {
     ssl: {
-      require: true,
+      require: false,
       rejectUnauthorized: false,
     },
   },
