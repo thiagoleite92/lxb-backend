@@ -10,7 +10,7 @@ const sequelize = new Sequelize(dbName, dbUser, dbPassword, {
   dialect: "postgres",
   host: dbHost,
   dialectOptions: {
-    ssl: true,
+    ssl: false,
     rejectUnauthorized: false,
   },
 });
