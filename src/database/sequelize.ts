@@ -14,6 +14,7 @@ const sequelize = new Sequelize(dbName, dbUser, dbPassword, {
   dialect: "postgres",
   host: dbHost,
   dialectOptions: {
+    project: "ep-soft-cell-a55m5ghc",
     ssl: {
       require: true,
       rejectUnauthorized: false,
