@@ -1,8 +1,8 @@
 import { DataTypes, Model } from "sequelize";
-import sequelize from "../sequelize";
 import { Brands } from "./brands-entity";
 import { Colors } from "./colors-entity";
 import { Models } from "./models-entity";
+import sequelize from "../sequelize";
 
 export class Products extends Model {
   public id!: number;

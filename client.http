@@ -33,7 +33,7 @@ Authorization: Bearer {{authToken}}
  {
   "name": "novo produto 22",
   "price": 1000,
-  "color": "nova cor",
+  "color": "nova outra cor",
   "brand": "xaiomi",
   "model": "xaiomi 9"
  }
