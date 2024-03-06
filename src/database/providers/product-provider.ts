@@ -68,6 +68,25 @@ export class ProductProvider implements ProductRepository {
   }
 
   async findAll() {
-    return Products.findAll();
+    return Products.findAll({
+      attributes: { exclude: ["brandId", "colorId", "modelId"] },
+      include: [
+        {
+          model: Models,
+          as: "model",
+          attributes: ["model"],
+        },
+        {
+          model: Brands,
+          as: "brand",
+          attributes: ["brand"],
+        },
+        {
+          model: Colors,
+          as: "color",
+          attributes: ["color"],
+        },
+      ],
+    });
   }
 }

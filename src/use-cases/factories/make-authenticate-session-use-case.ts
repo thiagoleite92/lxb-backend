@@ -7,6 +7,6 @@ export const makeAuthenticateSessionUseCase = () => {
   return new AuthenticateSessionUseCase(
     new UserProvider(),
     new BcrypterHasher(),
-    new JwtEncrypter()
+    new JwtEncrypter(new UserProvider())
   );
 };

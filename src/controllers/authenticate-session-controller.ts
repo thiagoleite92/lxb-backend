@@ -10,7 +10,7 @@ export const authenticateSessionController = async (
 
   const authenticateSessionUseCase = makeAuthenticateSessionUseCase();
 
-  const token = await authenticateSessionUseCase.execute(credentials);
+  const { token, user } = await authenticateSessionUseCase.execute(credentials);
 
-  return res.status(200).json(token);
+  return res.status(200).json({ token, user });
 };

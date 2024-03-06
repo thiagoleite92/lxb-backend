@@ -1,3 +1,4 @@
+import { readFileSync } from "fs";
 import { Sequelize } from "sequelize";
 import { env } from "../env";
 
@@ -10,9 +11,10 @@ const sequelize = new Sequelize(dbName, dbUser, dbPassword, {
   dialect: "postgres",
   host: dbHost,
   dialectOptions: {
-    ssl: true,
-    native: true,
     rejectUnauthorized: false,
+    ca: readFileSync("server-ca.pem").toString(),
+    key: readFileSync("client-key.pem").toString(),
+    cert: readFileSync("client-cert.pem").toString(),
   },
 });
 

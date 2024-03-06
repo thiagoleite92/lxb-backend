@@ -11,11 +11,8 @@ export class AuthenticateSessionUseCase {
     private readonly encrypter: JwtEncrypter
   ) {}
 
-  async execute({
-    login,
-    password,
-  }: AuthenticateSessionSchema): Promise<{ token: string }> {
-    const user = await this.userProvider.findByEmail(login);
+  async execute({ email, password }: AuthenticateSessionSchema) {
+    const user = await this.userProvider.findByEmail(email);
 
     if (!user) {
       throw new ResourceNotFoundError("User not found");
@@ -36,6 +33,6 @@ export class AuthenticateSessionUseCase {
 
     const token = await this.encrypter.sign(payload);
 
-    return { token };
+    return { token, user: { name: user.name, email: user.email, id: user.id } };
   }
 }

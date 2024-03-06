@@ -9,7 +9,7 @@ export const registerUserSchema = z.object({
 export type RegisterUserSchema = z.infer<typeof registerUserSchema>;
 
 export const authenticateSessionSchema = z.object({
-  login: z.string().email(),
+  email: z.string().email(),
   password: z.string().min(3),
 });
 

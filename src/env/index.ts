@@ -16,7 +16,7 @@ const envSchema = z.object({
   DATABASE_NAME: z.string(),
   DATABASE_HOST: z.string(),
   DATABASE_DIALECT: z.string().default("postgres"),
-  PORT: z.coerce.number().default(3000),
+  PORT: z.coerce.number().default(3001),
   JWT_SECRET: z.string(),
   SALT: z.coerce.number().default(5),
 });

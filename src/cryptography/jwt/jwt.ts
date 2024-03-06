@@ -38,6 +38,7 @@ export class JwtEncrypter implements Encrypter {
     return {
       name: user?.name,
       userId: user?.id,
+      email: user?.email,
     };
   }
 }

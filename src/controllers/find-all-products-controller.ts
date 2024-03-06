@@ -7,7 +7,7 @@ export const findAllProductsController = async (
 ) => {
   const findAllProductsUseCase = makeFindAllProductsUseCase();
 
-  const products = await findAllProductsUseCase.execute();
+  const data = await findAllProductsUseCase.execute();
 
-  return res.status(200).json({ data: products });
+  return res.status(200).json({ data });
 };
