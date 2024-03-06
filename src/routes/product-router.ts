@@ -7,6 +7,8 @@ import { authenticateMiddleware } from "../middleware/authenticate-middleware";
 import { getProductController } from "../controllers/get-product-controller";
 import { findAllProductsController } from "../controllers/find-all-products-controller";
 import { getAllBrandsController } from "../controllers/get-all-brands-controller";
+import { getAllColorsController } from "../controllers/get-all-colors-controller";
+import { getAllModelsController } from "../controllers/get-all-models-controller";
 
 export const productRouter = Router();
 
@@ -14,6 +16,8 @@ productRouter.use(resolver(authenticateMiddleware));
 
 productRouter.get("/", resolver(findAllProductsController));
 productRouter.get("/brands", resolver(getAllBrandsController));
+productRouter.get("/colors", resolver(getAllColorsController));
+productRouter.get("/models", resolver(getAllModelsController));
 productRouter.get("/:productId", resolver(getProductController));
 productRouter.post("/", resolver(createProductController));
 productRouter.put("/:productId", resolver(updateProductController));

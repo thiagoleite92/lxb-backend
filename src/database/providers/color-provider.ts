@@ -8,4 +8,10 @@ export class ColorProvider implements ColorRepository {
   async findOrCreate(color: string): Promise<[Colors, boolean]> {
     return Colors.findOrCreate({ where: { color }, defaults: { color } });
   }
+
+  async getAllColors() {
+    return Colors.findAll({
+      attributes: ["id", "color"],
+    });
+  }
 }

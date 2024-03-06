@@ -12,4 +12,10 @@ export class ModelProvider implements ModelRepository {
       defaults: { model, brandId },
     });
   }
+
+  async getAllModels() {
+    return Models.findAll({
+      attributes: ["id", "model"],
+    });
+  }
 }

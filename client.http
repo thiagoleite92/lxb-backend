@@ -144,4 +144,20 @@ GET {{base_url}}/api/product/brands
 Content-Type: application/json
 Authorization: Bearer {{authToken}}
 
+###
+
+# @name getAllModels
+
+GET {{base_url}}/api/product/models
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+###
+
+# @name getAllColors
+
+GET {{base_url}}/api/product/colors
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
 
