@@ -136,4 +136,12 @@ GET {{base_url}}/api/product
 Content-Type: application/json
 Authorization: Bearer {{authToken}}
 
+###
+
+# @name getAllBrands
+
+GET {{base_url}}/api/product/brands
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
 

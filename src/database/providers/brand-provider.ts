@@ -15,4 +15,11 @@ export class BrandProvider implements BrandRepository {
   async findOrCreate(brand: string) {
     return Brands.findOrCreate({ where: { brand }, defaults: { brand } });
   }
+  async getAllBrands(): Promise<Brands[]> {
+    const brands = await Brands.findAll({
+      attributes: ["brand", "id"],
+    });
+
+    return brands;
+  }
 }

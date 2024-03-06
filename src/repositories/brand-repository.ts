@@ -5,4 +5,5 @@ export interface BrandRepository {
   findByName(name: string): Promise<Brands | null>;
   findById(id: number): Promise<Brands | null>;
   findOrCreate(brand: string): Promise<[Brands, boolean]>;
+  getAllBrands(): Promise<Brands[]>;
 }
