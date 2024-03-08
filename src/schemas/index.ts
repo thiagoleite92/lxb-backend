@@ -68,7 +68,7 @@ export const createProductSchemaV3 = z.array(
       model: z.string().min(3).max(50),
       data: z.array(
         z.object({
-          price: z.number().min(3).max(50),
+          price: z.number(),
           color: z.string().min(3).max(50),
         })
       ),

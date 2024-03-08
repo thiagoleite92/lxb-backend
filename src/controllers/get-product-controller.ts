@@ -5,8 +5,6 @@ import { makeGetProductUseCase } from "../use-cases/factories/make-get-user-prod
 export const getProductController = async (req: Request, res: Response) => {
   const { productId } = updateProductSchemaParams.parse(req.params);
 
-  console.log(productId);
-
   const getProductUseCase = makeGetProductUseCase();
 
   const product = await getProductUseCase.execute(productId);

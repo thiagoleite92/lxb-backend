@@ -6,8 +6,12 @@ export const findAllProductsController = async (
   res: Response
 ) => {
   const findAllProductsUseCase = makeFindAllProductsUseCase();
+  let query: any = "";
+  if (req.query.search) {
+    query = req.query.search;
+  }
 
-  const data = await findAllProductsUseCase.execute();
+  const data = await findAllProductsUseCase.execute(query);
 
   return res.status(200).json({ data });
 };

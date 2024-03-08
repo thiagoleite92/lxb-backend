@@ -4,8 +4,8 @@ import { ProductRepository } from "../repositories/product-repository";
 export class FindAllProductsUseCase {
   constructor(private readonly productProvider: ProductRepository) {}
 
-  async execute() {
-    const products = await this.productProvider.findAll();
+  async execute(search?: string) {
+    const products = await this.productProvider.findAll(search ? search : "");
     return products.map(parseProducts);
   }
 }

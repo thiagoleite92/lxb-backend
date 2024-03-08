@@ -7,6 +7,8 @@ export class GetProductUseCase {
   async execute(productId: number) {
     const product = await this.productProvider.findById(productId);
 
+    console.log(product);
+
     if (!product) {
       throw new ResourceNotFoundError("Product not found");
     }

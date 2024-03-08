@@ -10,7 +10,6 @@ export class GetAlLModelsUseCase {
   }
 }
 
-const parseModels = ({ model, id }: { model: string; id: number }) => ({
+const parseModels = ({ model }: { model: string }) => ({
   value: model,
-  id,
 });

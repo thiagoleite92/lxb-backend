@@ -1,3 +1,4 @@
+import { Op } from "sequelize";
 import {
   CreateProduct,
   ProductRepository,
@@ -52,7 +53,26 @@ export class ProductProvider implements ProductRepository {
   }
 
   async findById(id: number): Promise<Products | null> {
-    return Products.findByPk(id);
+    return Products.findByPk(id, {
+      attributes: { exclude: ["brandId", "colorId", "modelId"] },
+      include: [
+        {
+          model: Models,
+          as: "model",
+          attributes: ["model"],
+        },
+        {
+          model: Brands,
+          as: "brand",
+          attributes: ["brand"],
+        },
+        {
+          model: Colors,
+          as: "color",
+          attributes: ["color"],
+        },
+      ],
+    });
   }
 
   async update(updateProduct: UpdateProduct) {
@@ -67,9 +87,19 @@ export class ProductProvider implements ProductRepository {
     await Products.destroy({ where: { id } });
   }
 
-  async findAll() {
+  async findAll(search?: string) {
+    console.log(search, "SEARCH");
+
     return Products.findAll({
+      where: {
+        [Op.or]: {
+          name: {
+            [Op.iLike]: `%${search}%`,
+          },
+        },
+      },
       attributes: { exclude: ["brandId", "colorId", "modelId"] },
+
       include: [
         {
           model: Models,

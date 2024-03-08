@@ -10,7 +10,6 @@ export class GetAlLBrandsUseCase {
   }
 }
 
-const parseBrands = ({ brand, id }: { brand: string; id: number }) => ({
+const parseBrands = ({ brand }: { brand: string }) => ({
   value: brand,
-  id,
 });

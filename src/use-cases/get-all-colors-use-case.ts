@@ -10,7 +10,6 @@ export class GetAlLColorsUseCase {
   }
 }
 
-const parseColors = ({ color, id }: { color: string; id: number }) => ({
+const parseColors = ({ color }: { color: string }) => ({
   value: color,
-  id,
 });
